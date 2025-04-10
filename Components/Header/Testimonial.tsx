@@ -2,9 +2,10 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import background from '@/public/gallery/testimonial.png'
+import background from '@/public/gallery/testimonial.png';
 import "swiper/css";
 import testimonail1 from "@/public/gallery/image1.jpg";
+
 export default function TestimonialSection() {
     const testimonials = [
         {
@@ -58,21 +59,21 @@ export default function TestimonialSection() {
     ];
 
     return (
-        <div className="w-full min-h-screen  bg-gray-100 py-12">
-            <div className="absolute inset-0 w-full h-screen">
-                <Image src={background} className="w-full h-full z-0" alt="fd" />
+        <div className="w-full min-h-screen relative bg-gray-100 py-12">
+            <div className="absolute inset-0 -z-10">
+                <Image src={background} fill alt="Background" className="object-cover w-full h-full" />
+                <div className="absolute inset-0 bg-black opacity-50"></div>
             </div>
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className=" text-gray-800 font-sans px-8 mb-8 relative ">
-                <h1 className="text-xl text-white font-semibold">Testimonials</h1>
-                <h1 className="text-3xl font-bold text-white py-2">What Our Clients Say</h1>
-                <p className="w-1/2  text-gray-200">
+
+            <div className="relative  px-4 sm:px-8 md:px-16 lg:px-24 max-w-7xl mx-auto text-b">
+                <h2 className="text-xl sm:text-2xl font-semibold">Testimonials</h2>
+                <h1 className="text-2xl sm:text-4xl font-bold py-2">What Our Clients Say</h1>
+                <p className="text-sm sm:text-base md:text-lg max-w-2xl">
                     Nothing makes us prouder than the satisfaction and joy of our clients. Here are some of the wonderful things they have to say about their experiences with us.
                 </p>
             </div>
 
-
-            <div className="relative w-full px-6">
+            <div className="relative w-full px-4 sm:px-8 pt-8">
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
                     spaceBetween={20}
@@ -85,12 +86,11 @@ export default function TestimonialSection() {
                         768: { slidesPerView: 2 },
                         1024: { slidesPerView: 3 },
                     }}
-                    className=""
                 >
                     {testimonials.map((testimonial) => (
-                        <SwiperSlide key={testimonial.id} className="flex w-full   justify-center ">
-                            <div className="bg-white  cursor-pointer rounded-lg p-6 shadow-md max-w-sm flex flex-col">
-                                <div className="flex  items-center mb-4">
+                        <SwiperSlide key={testimonial.id} className="flex justify-center">
+                            <div className="bg-white rounded-lg p-6 shadow-md w-full max-w-sm flex flex-col">
+                                <div className="flex items-center mb-4">
                                     <div className="relative w-12 h-12 rounded-full overflow-hidden mr-3">
                                         <Image
                                             src={testimonial.avatar}
@@ -106,26 +106,22 @@ export default function TestimonialSection() {
                                     </div>
                                 </div>
                                 <p className="text-gray-700 mb-4">{testimonial.text}</p>
-                                <div className="flex">
-                                    <div className="flex items-center">
-                                        <div className="flex">
-                                            {[...Array(5)].map((_, i) => {
-                                                const filled = i < Math.floor(testimonial.rating);
-                                                const halfFilled = i === Math.floor(testimonial.rating) && testimonial.rating % 1 !== 0;
-                                                return (
-                                                    <svg
-                                                        key={i}
-                                                        className={`w-5 h-5 ${filled ? "text-yellow-400" : halfFilled ? "text-yellow-400 opacity-50" : "text-gray-300"}`}
-                                                        fill="currentColor"
-                                                        viewBox="0 0 20 20"
-                                                    >
-                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                    </svg>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                    <span className="ml-2 flex justify-center text-gray-700 font-medium">{testimonial.rating.toFixed(1)}</span>
+                                <div className="flex items-center">
+                                    {[...Array(5)].map((_, i) => {
+                                        const filled = i < Math.floor(testimonial.rating);
+                                        const halfFilled = i === Math.floor(testimonial.rating) && testimonial.rating % 1 !== 0;
+                                        return (
+                                            <svg
+                                                key={i}
+                                                className={`w-5 h-5 ${filled ? "text-yellow-400" : halfFilled ? "text-yellow-400 opacity-50" : "text-gray-300"}`}
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                            >
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        );
+                                    })}
+                                    <span className="ml-2 text-gray-700 font-medium">{testimonial.rating.toFixed(1)}</span>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -133,11 +129,7 @@ export default function TestimonialSection() {
                 </Swiper>
             </div>
 
-
-            <div className="custom-pagination flex justify-center mt-4 space-x-2">
-
-            </div>
-
+            <div className="custom-pagination flex justify-center mt-6 space-x-2" />
         </div>
     );
 }
