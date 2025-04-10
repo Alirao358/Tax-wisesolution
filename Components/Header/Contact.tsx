@@ -6,7 +6,7 @@ function ContactPage() {
     const baseWhatsappLink = 'https://wa.me/447385994006?text=';
 
     // Function to create WhatsApp link with the user's message
-    const getWhatsappLink = (userMessage) => {
+    const getWhatsappLink = (userMessage = '') => {
         const encodedMessage = encodeURIComponent(
             userMessage || 'Hi, I came across your website and would like to connect.'
         );
@@ -16,13 +16,16 @@ function ContactPage() {
     // Handle sending the message
     const handleSendMessage = () => {
         if (message.trim()) {
-            window.open(getWhatsappLink(message), '_blank');
+            if (typeof window !== 'undefined') {
+                window.open(getWhatsappLink(message), '_blank');
+            }
         }
-    }; // ✅ Semicolon added here to fix the error
+    };
 
     // Handle pressing Enter key
-    const handleKeyPress = (e) => {
+    const handleKeyDown = (e) => {
         if (e.key === 'Enter' && message.trim()) {
+            e.preventDefault(); // Optional: Prevent form submission
             handleSendMessage();
         }
     };
@@ -80,7 +83,7 @@ function ContactPage() {
                                 type="text"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                onKeyPress={handleKeyPress}
+                                onKeyDown={handleKeyDown}
                                 placeholder="Type your message here..."
                                 className="flex-1 bg-gray-100 rounded-full py-3 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
