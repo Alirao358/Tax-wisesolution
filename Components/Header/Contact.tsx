@@ -121,7 +121,7 @@ function ContactPage() {
                             href={getWhatsappLink()}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-4 rounded-xl font-medium text-lg transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                            className="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-4 rounded-xl font-medium text-lg transition-all duration-300 shadow-md hover:shadow-lg  items-center justify-center gap-2"
                         >
                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.4054 3.5875C18.1607 1.3275 15.1714 0 11.9946 0C5.4375 0 0.101786 5.33571 0.101786 11.8929C0.101786 13.9875 0.648214 16.0339 1.6875 17.8393L0 24L6.30536 22.3446C8.04107 23.2929 9.99643 23.7857 11.9893 23.7857H11.9946C18.5464 23.7857 24 18.45 24 11.8929C24 8.71607 22.65 5.84732 20.4054 3.5875Z" />
